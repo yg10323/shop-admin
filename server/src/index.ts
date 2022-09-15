@@ -1,6 +1,5 @@
 import Koa from "koa";
-import { $consts } from "./plugins";
-
+import { $consts } from "src/plugins";
 
 const app = new Koa();
 
