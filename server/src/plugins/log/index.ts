@@ -5,9 +5,23 @@ class MakeLog {
 
   constructor () {
     this.logs = {}
-
+    this._build()
   }
 
+  _build () {
+    log4js.configure({
+      appenders: {
+        console: { type: 'console' },
+        errorFile: {
+          type: 'file'
+        }
+      },
+      categories: {
+        console: { appenders: ['console'], level: 'debug' },
+        error: { appenders: ['errorFile'], level: 'error' }
+      }
+    })
+  }
 
 
 }
