@@ -50,7 +50,7 @@ class CommonStore {
       initCacheDone: observable,
       isLogin: computed
     })
-    // this.initCache()
+    this.initCache()
   }
 
   // 登陆的最终态

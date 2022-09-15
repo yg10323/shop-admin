@@ -14,7 +14,7 @@ const config = [
     value: [
       {
         name: 'LOCAL_BASE',
-        value: ['localhost']
+        value: ['localhost', '127.0.0.1']
       },
       {
         name: '线上',
@@ -42,7 +42,7 @@ const config = [
     value: [
       {
         name: 'LOCAL_BASE',
-        value: 3310
+        value: 4012
       },
       {
         name: '线上',
