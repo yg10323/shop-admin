@@ -10,8 +10,8 @@ const generateModel = () => {
     directory: $consts['CONFIG/MODEL_DIRECTORY'],
     port: $consts['CONFIG/DB_PORT'],
     additional: {
-      // 将seq生成的时间戳也映射出来
-      timestamps: true
+      // 关闭时间映射
+      timestamps: false
     }
   }
   const auto = new SequelizeAuto(dbConfig.sequelize, $consts['CONFIG/DB_USER'], $consts['CONFIG/DB_PASSWORD'], options)
