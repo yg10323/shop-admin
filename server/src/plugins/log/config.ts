@@ -1,2 +1,2 @@
-const level = ['error', 'warning', 'info', 'debug']
+const level = ['default', 'error', 'info', 'log']
 export default level
