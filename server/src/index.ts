@@ -3,7 +3,7 @@ import Koa from 'koa'
 import cors from 'koa2-cors'
 import koaBody from 'koa-body'
 import koaStatic from 'koa-static'
-import mapRoutes from './router'
+import mapRoutes from 'src/router'
 import { $consts } from 'src/plugins'
 
 const app = new Koa()
