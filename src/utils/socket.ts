@@ -96,7 +96,54 @@ class GlobalSocket {
 }
 
 type SocketProps = {
+  url: string,
+  onopen?: Function,
+  onclose?: Function,
+  onmessage?: Function,
+  onerror?: Function,
+  newSocket?: boolean,
+  autoReconnect?: boolean
+  reconnectInterval?: number
+}
+class Socket {
+  // StorageSocket 或 GlobalSocket 的实例
+  socketInstance: any
+  socketEvtIndex: number
 
+  constructor (props: SocketProps) {
+    const { onopen, onclose, onmessage, onerror, newSocket = false, ...resetProps } = props
+
+    let globalSocket = undefined
+    if (!storageSocket.socket || newSocket) {
+      globalSocket = new GlobalSocket({ ...resetProps })
+    }
+    this.socketInstance = globalSocket || storageSocket
+    // 存储所有的监听函数, 保证监听消息能够正常执行
+    storageSocket.onopen.push(onopen)
+    storageSocket.onclose.push(onclose)
+    storageSocket.onmessage.push(onmessage)
+    storageSocket.onerror.push(onerror)
+    // 保证新的 Socket 实例调用 close 函数时, 能正常移除监听的消息
+    this.socketEvtIndex = storageSocket.onopen.length - 1
+    if (this.socketInstance?.socket.readyState === 1 && onopen instanceof Function) {
+      Promise.resolve().then(() => {
+        onopen()
+      })
+    }
+  }
+
+  send (data: any) {
+    if (!this.socketInstance.socket) return
+    this.socketInstance.socket.send(data)
+  }
+
+  close () {
+    if (this.socketEvtIndex === -1) return
+    storageSocket.onopen.splice(this.socketEvtIndex, 1, undefined)
+    storageSocket.onclose.splice(this.socketEvtIndex, 1, undefined)
+    storageSocket.onmessage.splice(this.socketEvtIndex, 1, undefined)
+    storageSocket.onerror.splice(this.socketEvtIndex, 1, undefined)
+  }
 }
 
-export default {}
+export default Socket
