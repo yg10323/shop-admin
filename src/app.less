@@ -1,0 +1,65 @@
+.app {
+  position: relative;
+}
+
+.carousel {
+  margin: auto;
+  position: relative;
+  width: 600px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  overflow: hidden;
+
+  &__leftBtn,
+  &__rightBtn {
+    width: 68px;
+    height: 100%;
+    transition: all .5s;
+    cursor: pointer;
+  }
+
+  &__leftBtn {
+    float: left;
+    background: url('./assets/btn-left.png') 50% no-repeat;
+  }
+
+  &__leftBtn:hover {
+    background: url('./assets/btn-left-active.png') 50% no-repeat;
+  }
+
+  &__rightBtn {
+    float: right;
+    background: url('./assets/btn-right.png') 50% no-repeat;
+  }
+
+  &__rightBtn:hover {
+    background: url('./assets/btn-right-active.png') 50% no-repeat;
+  }
+
+  &__content {
+    float: left;
+    position: relative;
+    width: calc(100% - 68px - 68px);
+    height: 100%;
+    overflow: hidden;
+
+    &-scroll {
+      position: absolute;
+      display: flex;
+      left: 0;
+      transition: all 1.5s linear;
+    }
+
+    .scroll-item {
+      width: 140px;
+      padding-right: 40px;
+    }
+
+    .wrap {
+      width: 100%;
+      cursor: pointer;
+      background-color: skyblue;
+    }
+  }
+}

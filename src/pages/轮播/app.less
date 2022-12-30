@@ -1,0 +1,50 @@
+.modal {
+  position: relative;
+  height: 70vh;
+  overflow: scroll;
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-top: 16px;
+    transform: translateX(-50%);
+  }
+
+  .tab1 {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+      width: 65%;
+      border-right: 1px solid purple;
+
+      &-config {
+        padding-bottom: 12px;
+        border-bottom: 1px solid purple;
+      }
+
+      &-chart {
+        width: 100%;
+        padding-top: 12px;
+      }
+    }
+
+    &__right {
+      flex: 1;
+      background-color: skyblue;
+    }
+  }
+
+  .mt-16 {
+    margin-top: 16px;
+  }
+
+
+
+  // antd
+  .ant-col-24 {
+    display: flex;
+  }
+}

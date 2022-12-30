@@ -1,0 +1,66 @@
+@app: App;
+
+.@{app} {
+  table {
+    border-collapse: collapse;
+    border: 1px #525152 solid;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+
+  th,
+  td {
+    height: 120px;
+    width: 310px;
+    border: 1px #525152 solid;
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+  }
+
+  &__row {
+
+    &-extra {
+      position: relative;
+      background-color: rgb(214, 137, 35);
+      overflow: hidden;
+
+      &--item {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        bottom: -30px;
+        height: 30px;
+        border-top: 1px solid #000;
+        transform-origin: top right;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -100px;
+          top: -1px;
+          width: 100px;
+          height: 1px;
+          background-color: #000;
+        }
+      }
+
+      span {
+        position: absolute;
+        font-size: 14px;
+      }
+    }
+
+    &-head {
+      background-color: #D6D3D6;
+    }
+  }
+
+  &__col {
+
+    &-head {
+      background-color: #D6D3D6;
+    }
+  }
+}
