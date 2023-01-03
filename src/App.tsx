@@ -2,6 +2,12 @@
 import { useEffect, useRef, useState } from 'react'
 import NodeList from './nodeList'
 import './app.less'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import 'swiper/css';
+
+import { Autoplay, Navigation } from "swiper";
 
 const App = () => {
   const carouselRef = useRef<any>(null)
@@ -120,6 +126,7 @@ const App = () => {
     }
   }
 
+
   return (
     <div className='app'>
       <div ref={carouselRef} className='carousel'>
@@ -142,6 +149,36 @@ const App = () => {
         </div>
         <div className='carousel__btnRight' onClick={handleNext}></div>
       </div>
+      <div className="testSwiper">
+        <div className="swiper-button-prev"></div>
+        <Swiper
+          slidesPerView='auto'
+          loop={true}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+          modules={[Navigation, Autoplay]}
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: true,
+          }}
+          className="mySwiper"
+        >
+          <SwiperSlide><span className='test'>Slide 1</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 2</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 3</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 4</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 5</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 6</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 7</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 8</span></SwiperSlide>
+          <SwiperSlide><span className='test'>Slide 9</span></SwiperSlide>
+        </Swiper>
+        <div className="swiper-button-next"></div>
+      </div>
+
+
     </div>
   )
 }
