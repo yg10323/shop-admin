@@ -11,55 +11,69 @@
   text-align: center;
   overflow: hidden;
 
-  &__leftBtn,
-  &__rightBtn {
+  &__btnLeft,
+  &__btnRight {
+    display: block;
+    position: absolute;
+    top: 0;
     width: 68px;
     height: 100%;
     transition: all .5s;
     cursor: pointer;
   }
 
-  &__leftBtn {
-    float: left;
-    background: url('./assets/btn-left.png') 50% no-repeat;
+  &__btnLeft {
+    left: 0;
+    background: url(./assets/btn-left.png) no-repeat center;
   }
 
-  &__leftBtn:hover {
-    background: url('./assets/btn-left-active.png') 50% no-repeat;
+  &__btnRight {
+    right: 0;
+    background: url(./assets/btn-right.png) no-repeat center;
   }
 
-  &__rightBtn {
-    float: right;
-    background: url('./assets/btn-right.png') 50% no-repeat;
+  &__btnLeft:hover {
+    background: url(./assets/btn-left-active.png) no-repeat center;
   }
 
-  &__rightBtn:hover {
-    background: url('./assets/btn-right-active.png') 50% no-repeat;
+  &__btnRight:hover {
+    background: url(./assets/btn-right-active.png) no-repeat center;
   }
 
   &__content {
-    float: left;
     position: relative;
     width: calc(100% - 68px - 68px);
     height: 100%;
+    margin: 0 auto;
     overflow: hidden;
+  }
 
-    &-scroll {
-      position: absolute;
-      display: flex;
-      left: 0;
-      transition: all 1.5s linear;
-    }
+  .scrollWrap {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    transition: left .7s linear;
+  }
 
-    .scroll-item {
-      width: 140px;
-      padding-right: 40px;
-    }
+  .scroll-item {
+    float: left;
+    width: 140px;
+    height: 100px;
+    padding-right: 40px;
+    text-align: center;
+    z-index: 999;
+  }
 
-    .wrap {
-      width: 100%;
-      cursor: pointer;
-      background-color: skyblue;
-    }
+  span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: skyblue;
+  }
+
+  .activeNode {
+    background-color: red !important;
   }
 }
